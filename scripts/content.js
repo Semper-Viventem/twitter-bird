@@ -8,7 +8,11 @@ waitForElm("a[aria-label='Twitter']").then((homeIconContainer) => {
 	const birdContainer = document.createElement("div");
 	birdContainer.classList.add('container-a');
 	const birdIcon = document.createElement("img");
-	const birdIconLink = "chrome-extension://" + chrome.runtime.id + "/images/twitter-bird.png";
+
+	var birdIconLink = getIconLink();
+
+	console.log("twitter-bird " + birdIconLink);
+
 	birdIcon.src = birdIconLink;
 	birdIcon.height = 50;
 	birdIcon.width = 50;
@@ -17,14 +21,43 @@ waitForElm("a[aria-label='Twitter']").then((homeIconContainer) => {
 	homeIconContainer.appendChild(birdContainer);
 	birdContainer.appendChild(birdIcon);
 
-	var link = document.querySelector("link[rel~='icon']");
-	if (!link) {
-    	link = document.createElement('link');
-    	link.rel = 'icon';
-    	document.head.appendChild(link);
-	}
-	link.href = birdIconLink;
+	updateTabIcon(birdIconLink);
 });
+
+function updateTabIcon(birdIconLink) {
+	if (isFirefox()) {
+		updateFirefoxTabIcon(birdIconLink);
+	} else {
+		console.log("twitter-bird update Chrome link icon");
+		var link = document.querySelector("link[rel~='icon']");
+		if (!link) {
+    		link = document.createElement('link');
+    		link.rel = 'icon';
+   			document.head.appendChild(link);
+		}
+		link.href = birdIconLink;
+	}
+}
+
+function updateFirefoxTabIcon(birdIconLink) {
+	console.log("twitter-bird update Firefox link icon");
+	const tab = browser.tabs.getCurrent()
+    browser.pageAction.setIcon({ tabId: tab.id, path: birdIconLink });
+    browser.pageAction.show(tab.id);
+}
+
+function getIconLink() {
+	if(isFirefox()) {
+		return browser.runtime.getURL("images/twitter-bird.png");
+	} else {
+		return chrome.runtime.getURL("images/twitter-bird.png");
+	}
+}
+
+function isFirefox() {
+	let userAgent = navigator.userAgent;
+	return userAgent.match(/firefox|fxios/i);
+}
 
 function waitForElm(selector) {
     return new Promise(resolve => {
