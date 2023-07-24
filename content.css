@@ -1,0 +1,18 @@
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.container-a {
+  position: relative;
+  height: 50px;
+}
+
+.centered-element-a {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
