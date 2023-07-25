@@ -1,5 +1,5 @@
 # twitter-bird
-Google Chrome extension which returns the Twitter bird icon back
+A browser extension to replace the main Twitter icon and favicon icon with the canonical Bird.
 
 > The Chrome version is still in the publishing review.
 
