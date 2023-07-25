@@ -44,6 +44,5 @@
         "48": "images/icon_48.png",
         "128": "images/icon_128.png",
         "512": "images/icon_128.png"
-    },
-    "permissions": ["activeTab", "tabs"]
+    }
 }
