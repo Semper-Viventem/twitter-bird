@@ -1,7 +1,7 @@
 //const homeIcon = document.querySelector("div.css-901oao.r-1awozwy.r-18jsvk2.r-6koalj.r-18u37iz.r-16y2uox.r-37j5jr.r-a023e6.r-b88u0q.r-1777fci.r-rjixqe.r-bcqeeo.r-q4m81j.r-qvutc0");
 console.log("twitter-bird " + document.readyState);
 
-waitForElm("a[aria-label='Twitter']").then((homeIconContainer) => {
+waitForElm("a[aria-label='X']").then((homeIconContainer) => {
 	console.log("twitter-bird element is ready");
 	removeAllChildNodes(homeIconContainer);
 
