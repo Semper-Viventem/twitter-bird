@@ -46,5 +46,17 @@
         "48": "images/icon_48.png",
         "128": "images/icon_128.png",
         "512": "images/icon_128.png"
-    }
+    },
+
+    // Firefox only:
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "kostyaxxx8@gmail.com",
+            "strict_min_version": "42.0"
+        }
+    },
+    "permissions": [
+        "activeTab",
+        "tabs"
+    ]
 }
